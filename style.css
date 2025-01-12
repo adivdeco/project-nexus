@@ -1092,10 +1092,8 @@ h2 {
   width: 100vw;
   background-color:pink;
   position: relative;
-  font-family: cursive;
   font-size: larger;
   display: flex;
-  align-items: center;
 }
 
 .pg2-left{
@@ -1117,5 +1115,133 @@ h2 {
    font-size: 1.9rem;
    font-weight: bold;
    color: #000;
+   font-family: cursive;
 
+}
+
+.pg2-right{
+  background-color: rgba(99, 63, 63, 0.343);
+  width: 75%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+}
+.headline {
+  position: relative;
+  top: 2%;
+  border: 1px solid #000;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px #3b3a3a;
+  font-weight: bold;
+  color: #000;
+  font-family: Arial;
+  height: 12%;
+  width: 70%;
+  background-color: white;
+}
+.headline input{
+  width: 100%;
+  height: 100%;
+  font-size: 2.5rem;
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  text-transform: capitalize;
+  background-color: rgba(192, 188, 188, 0.893);
+}
+
+.img-adder{
+  position: relative;
+  top: 4%;
+  border: 1px solid #000;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px #3b3a3a;
+  font-weight: bold;
+  font-family: Arial;
+  height: 22%;
+  width: 30%;
+  background-color:rgba(192, 188, 188, 0.893);
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  cursor: pointer;
+  font-weight: 300;
+  text-transform: capitalize;
+}
+
+.blog-data-input{
+  position: relative;
+  top: 8%;
+  border: 1px solid #000;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px #3b3a3a;
+  font-weight: bold;
+  font-family: Arial;
+  height: 40%;
+  width: 90%;
+  color: #000;
+}
+
+.blog-data-input textarea{
+  width: 100%;
+  height: 100%;
+  font-size: 1.6rem;
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  background-color: rgba(192, 188, 188, 0.893);
+  text-transform: capitalize;
+}
+.buttons-pg2{
+  position: relative;
+  top: 13%;
+  display: flex;
+  align-items: center;
+  gap: 200px;
+}
+
+.buttons-pg2>button{
+  padding: 5px 20px;
+  border: 1px solid black;
+  cursor: pointer;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+.buttons-pg2>button:hover {
+  transform: scale(1.06);
+  opacity: 0.8;
+}
+.draft-page{
+  /* display: none; */
+  position: absolute;
+  top: 8%;
+  right: 0%;
+  width: 75%;
+  height: 100%;
+  background-color: rgb(95, 60, 60);
+}
+.draft-box{
+  position: relative;
+  padding: 20px 20px;
+  gap: 20px;
+  border-bottom: 2px solid black;
+  height: 14%;
+  overflow-y: hidden;
+
+}
+.draft-box p{
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  
+  padding-top:20px ;
 }
