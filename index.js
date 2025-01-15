@@ -122,23 +122,7 @@ const paragraph = document.createElement('p');
 paragraph.textContent = `Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium suscipit veritatis id fugit dolore, vel praesentium voluptatem obcaecati aperiam, provident natus consectetur mollitia perspiciatis. Autem sapiente facere odio aliquid tempore.
 Praesentium expedita at asperiores error unde excepturi distinctio. Officiis, consequuntur nobis voluptatum laboriosam sapiente dolor, ea placeat vitae unde quod ipsam officia obcaecati, repellendus quas consequatur? Corrupti ipsam minima expedita.
 Maxime, eveniet dolores fuga rerum veniam culpa eum nesciunt unde natus nulla repellat temporibus facere quod eos commodi a neque id libero accusantium ab at. Aut nihil in architecto maxime?
-Optio similique quo ab in vel aspernatur iste maxime sed alias tempore omnis modi, ipsam adipisci a blanditiis nihil fuga, sapiente tenetur sequi amet? Suscipit impedit asperiores nulla minus esse!
-Placeat, deleniti molestias dolores vitae officia ullam deserunt voluptatum possimus provident reiciendis consectetur quo accusantium nostrum, tempore quos perferendis enim porro totam, veniam dicta non maxime! Fugiat, veniam consectetur. Iusto!
-Voluptatibus omnis rem adipisci labore quibusdam dolore consectetur quidem neque fuga corrupti, ipsa rerum mollitia, dolorum sequi a laborum expedita, quaerat accusantium vero consequuntur quisquam molestias quasi in provident? Cum.
-Facilis vitae hic repellat, provident unde qui, velit corrupti eveniet iure quia et nesciunt, veniam maxime itaque. Labore ullam error delectus, voluptate natus animi deleniti saepe veniam in aliquid. Natus?
-Quia quas earum et ipsum unde numquam ex veniam facilis minus suscipit. Iusto nemo voluptatum minima adipisci ducimus dolorum odio numquam perferendis, rem animi ipsa architecto quam totam eligendi asperiores!
-Temporibus placeat quae voluptate? Amet fugiat commodi aperiam nihil doloremque aut maxime modi! Earum odit rem officiis facilis doloribus deserunt repellendus, voluptatibus reiciendis cumque incidunt blanditiis ut, magni, inventore dolores?
-Provident iusto asperiores odit illum incidunt commodi, similique debitis placeat delectus, dolorem modi hic sint earum. Corporis commodi debitis, magnam non totam reprehenderit eius. Ex fugiat excepturi fugit minus quo!
-Beatae, sit delectus inventore voluptates architecto quia, doloribus quisquam minus vitae eos saepe hic accusantium laudantium dolore necessitatibus itaque commodi quidem a. Placeat sunt quod enim. Esse pariatur atque id!
-Exercitationem quo similique tenetur dolores voluptatibus, ullam architecto corrupti et amet, officiis molestias perferendis id, quia enim autem quam doloribus atque animi dolor. Autem, repellendus aliquid et cum dolore quaerat!
-Quisquam a, reprehenderit aut dolorum ab temporibus nemo explicabo iste sunt sed non corporis expedita assumenda illum libero. Ipsa rem iste minima vel eligendi, ducimus totam commodi fuga ad molestiae!
-Quidem, voluptas ullam! Inventore at ex sint dolores, necessitatibus rem. Sit quidem modi sapiente! Culpa, totam dolore suscipit fugiat, at neque necessitatibus voluptatem beatae omnis mollitia, nesciunt dolorem eum facere.
-Excepturi magnam dolor quis consectetur possimus dignissimos cumque rerum quas debitis aperiam? Impedit repellendus nemo mollitia! Earum aut aliquid, beatae minus saepe quae magni odit vel modi? Quia, fugit beatae.
-Quaerat minima sint neque incidunt rem aperiam non molestias praesentium deserunt, minus quibusdam sequi quia? Veritatis doloribus maiores quam ullam corporis deleniti magnam itaque, totam beatae odit dolorem eligendi. Dolorum.
-Laboriosam facere dolores earum asperiores ut a, aliquid blanditiis, quos modi, quisquam quis accusantium error iusto! Unde libero quasi voluptatum iusto rem quaerat dolor magni, quo nostrum neque quam qui.
-In, aspernatur? Aliquam nihil sunt minima laborum iure illo nesciunt, enim molestias dolore ipsa tempora, mollitia aut voluptates dolores similique non obcaecati quasi saepe vero reprehenderit laboriosam provident. Enim, unde?
-Iste, veniam nobis explicabo adipisci deleniti optio nulla laboriosam alias totam ab ut molestiae, mollitia incidunt earum tempora quasi. Neque saepe nobis deleniti asperiores porro, placeat quas quidem dolorum. Eligendi.
-Impedit eveniet quasi veniam ut numquam quos voluptatum eius? Enim veniam cupiditate impedit repudiandae distinctio odio quaerat cum explicabo assumenda autem similique tempora consequatur necessitatibus eveniet ipsum dolorum, libero soluta.`;
+Optio similique quo ab in vel aspernatur iste maxime sed alias tempore omnis modi, ipsam adipisci a blanditiis nihil fuga, sa`;
 
 blogsData.appendChild(blogDate);
 blogsData.appendChild(heading);
@@ -157,8 +141,11 @@ const loginform      = document.querySelector("#login-form")
 const page1          = document.querySelector(".page1")
 const bottomrow      = document.querySelector(".bottom-row")
 const navbar         = document.querySelector(".navbar")
+const pg2            = document.querySelector("#pg2")
+pg2Footer            = document.querySelector(".pg2-footer")
+
+
 const backend = (event) => {
- 
   const email = loginform.querySelector('input[name="email"]').value;
   const password = loginform.querySelector('input[name="password"]').value;
 
@@ -172,6 +159,8 @@ const backend = (event) => {
     navbar.style.height   ="6.3%";
     navbar.style.position  = "relative"
     navbar.style.aligItem = "center"
+    pg2.removeAttribute("id");
+    pg2Footer.style.display = "block";
 
     
   } else {
@@ -182,6 +171,27 @@ const backend = (event) => {
 
 // Attach the event listener to the form
 loginform.addEventListener("submit", backend);
+
+
+
+//draft page logic....
+const draftFile = document.querySelector(".draft-files > ul > li:first-child");
+const drftpg    = document.querySelector("#drftpg");
+
+const draftthing = (event)=>{
+  drftpg.removeAttribute("id");
+};
+
+draftFile.addEventListener("click",draftthing)
+
+
+// back button
+const backbtn = document.querySelector(".backbtn");
+
+backbtn.addEventListener("click",()=>{
+  drftpg.setAttribute("id","drftpg");
+})
+
 
 
 loginBtn.addEventListener("click",(event)=>{
