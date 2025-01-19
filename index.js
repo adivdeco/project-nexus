@@ -215,92 +215,166 @@ menulogic(sideMenu,menuIcon,closeContainer)
 const inpheadlines = document.querySelector('.headline>input');
 const inputdata = document.querySelector('.blog-data-input>textarea');
 const adddataIndraft = document.querySelector('.draft-btn');
+const imageInput     = document.querySelector('#image-input');
+const imagePreview   = document.querySelector('#image-preview');
 
-adddataIndraft.addEventListener("click", () => {
-  // Create the draft box container
-if (inpheadlines.value === "" || inputdata.value === "") {
-  alert("bkl data to daal lee 😡 .");
-  return;
-}
-else{  const draftBox = document.createElement("div");
-  draftBox.className = "draft-box";
 
-  // Create the heading
-  const heading = document.createElement("h3");
-  heading.textContent = inpheadlines.value;
-
-  // Create the paragraph
-  const paragraph = document.createElement("p");
-  paragraph.textContent = inputdata.value;
-    
-  // Append heading and paragraph to the draft box
-  draftBox.appendChild(heading);
-  draftBox.appendChild(paragraph);
-
-  // Append the draft box to the draft=page
-  const draftPage = document.querySelector(".draft-page");
-  draftPage.insertBefore(draftBox, draftPage.firstChild);
-
-   // Clear the input fields
- inpheadlines.value = '';
- inputdata.value = '';
-}
-
+// Handle image input change
+imageInput.addEventListener('change', (event) => {
+  const file = event.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      imagePreview.src = e.target.result;
+      imagePreview.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  }
 });
 
 
-// help to add data/blogs in blogs of page 1 /recent blogs
+// Save data to localStorage
+function saveToLocalStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
 
-const adddataINrecent = document.querySelector('.recent-btn');
+// Retrieve data from localStorage
+function getFromLocalStorage(key) {
+  return JSON.parse(localStorage.getItem(key)) || [];
+}
 
-adddataINrecent.addEventListener("click", () => {
+// Initialize from localStorage
+function initializeFromLocalStorage() {
+  const drafts = getFromLocalStorage("drafts");
+  drafts.forEach((draft) => createDraftBox(draft.headline, draft.content));
 
+  const recentBlogs = getFromLocalStorage("recentBlogs");
+  recentBlogs.forEach((blog) => createRecentBlog(blog.headline, blog.content, blog.image));
+
+  const sliders = getFromLocalStorage("sliders");
+  sliders.forEach((slider) => createSliderCard(slider.headline, slider.image));
+}
+
+// Create draft box
+function createDraftBox(headline, content) {
+  const draftBox = document.createElement("div");
+  draftBox.className = "draft-box";
+
+  const heading = document.createElement("h3");
+  heading.textContent = headline;
+
+  const paragraph = document.createElement("p");
+  paragraph.textContent = content;
+
+  draftBox.appendChild(heading);
+  draftBox.appendChild(paragraph);
+
+  const draftPage = document.querySelector(".draft-page");
+  draftPage.insertBefore(draftBox, draftPage.firstChild);
+}
+
+// Create recent blog
+function createRecentBlog(headline, content, image) {
+  const blogsOfPg1 = document.querySelector(".blogs-of-pg1");
+
+  const blogsCard = document.createElement("div");
+  blogsCard.className = "blogs-card";
+
+  const blogsImg = document.createElement("div");
+  blogsImg.className = "blogs-img";
+
+  const img = document.createElement("img");
+  img.src = image || ""; // Default to an empty string if no image
+  img.alt = "Blog Image";
+
+  const blogsData = document.createElement("div");
+  blogsData.className = "blogs-data";
+
+  const heading = document.createElement("h1");
+  heading.textContent = headline;
+
+  const paragraph = document.createElement("p");
+  paragraph.textContent = content;
+
+  blogsImg.appendChild(img);
+  blogsData.appendChild(heading);
+  blogsData.appendChild(paragraph);
+  blogsCard.appendChild(blogsImg);
+  blogsCard.appendChild(blogsData);
+  blogsOfPg1.insertBefore(blogsCard, blogsOfPg1.firstChild);
+}
+
+// Create slider card
+function createSliderCard(headline, image) {
+  const slidersCard = document.createElement("div");
+  slidersCard.className = "sliders-card";
+
+  const sliderImg = document.createElement("div");
+  sliderImg.className = "slider-img";
+
+  const img = document.createElement("img");
+  img.src = image || ""; // Default to an empty string if no image
+  img.alt = "Slider Image";
+
+  const sliderTxt = document.createElement("div");
+  sliderTxt.className = "slider-txt";
+  sliderTxt.textContent = headline;
+
+  sliderImg.appendChild(img);
+  slidersCard.appendChild(sliderImg);
+  slidersCard.appendChild(sliderTxt);
+
+  const slidersBox = document.querySelector(".sliders-box");
+  slidersBox.insertBefore(slidersCard, slidersBox.firstChild);
+}
+
+// Add to draft
+adddataIndraft.addEventListener("click", () => {
   if (inpheadlines.value === "" || inputdata.value === "") {
     alert("bkl data to daal lee 😡 .");
     return;
   }
 
-  else{
-    const blogsOfPg1 = document.querySelector(".blogs-of-pg1");
-    // recent blog......
-      const blogsCard = document.createElement('div');
-    blogsCard.className = 'blogs-card';
-    
-    const blogsImg = document.createElement('div');
-    blogsImg.className = 'blogs-img';
-    
-    const blogsData = document.createElement('div');
-    blogsData.className = 'blogs-data';
-    
-    // const blogDate = document.createElement('div')
-    // blogDate.className = "date";
-    // blogDate.innerHTML = date1;
-    
-    const heading = document.createElement('h1');
-    heading.textContent = inpheadlines.value;
-    
-    const paragraph = document.createElement('p');
-    paragraph.textContent = inputdata.value;
-    
-    // blogsData.appendChild(blogDate);
-    blogsData.appendChild(heading);
-    blogsData.appendChild(paragraph);
-    blogsCard.appendChild(blogsImg);
-    blogsCard.appendChild(blogsData);
-    blogsOfPg1.insertBefore(blogsCard, blogsOfPg1.firstChild);
+  const headline = inpheadlines.value;
+  const content = inputdata.value;
 
-  //   // Clear the input fields
-    inpheadlines.value = '';
-    inputdata.value = '';
-  }    
+  createDraftBox(headline, content);
 
-})
+  const drafts = getFromLocalStorage("drafts");
+  drafts.push({ headline, content });
+  saveToLocalStorage("drafts", drafts);
+
+  inpheadlines.value = '';
+  inputdata.value = '';
+});
+
+// Add to recent blogs
+const adddataINrecent = document.querySelector('.recent-btn');
 
 
-//add data in top headline / sliders 
+adddataINrecent.addEventListener("click", () => {
+  if (inpheadlines.value === "" || inputdata.value === "") {
+    alert(" data to daal loo 😡 .");
+    return;
+  }
 
-const slidersBox = document.createElement('div');
-slidersBox.className = 'sliders-box';
+  const headline = inpheadlines.value;
+  const content = inputdata.value;
+  const image = imagePreview.src;
+
+  createRecentBlog(headline, content, image);
+
+  const recentBlogs = getFromLocalStorage("recentBlogs");
+  recentBlogs.push({ headline, content, image });
+  saveToLocalStorage("recentBlogs", recentBlogs);
+
+  inpheadlines.value = '';
+  inputdata.value = '';
+  imagePreview.src = '';
+  imageInput.value = '';
+});
+
+// Add to top headline (slider)
 const adddataInheadline = document.querySelector('.headline-btn');
 
 adddataInheadline.addEventListener("click", () => {
@@ -308,32 +382,30 @@ adddataInheadline.addEventListener("click", () => {
     alert("bkl data to daal lee 😡 .");
     return;
   }
-  else{
-      const slidersCard = document.createElement('div');
-      slidersCard.className = 'sliders-card';
 
-      const sliderImg = document.createElement('div');
-      sliderImg.className = 'slider-img';
+  const headline = inpheadlines.value;
+  const image = imagePreview.src;
 
-      const sliderTxt = document.createElement('div');
-      sliderTxt.className = 'slider-txt';
-      sliderTxt.textContent = inpheadlines.value;
+  createSliderCard(headline, image);
 
-      slidersCard.appendChild(sliderImg);
-      slidersCard.appendChild(sliderTxt);
-      
-      const slidersBox= document.querySelector(".sliders-box")
-      slidersBox.insertBefore(slidersCard, slidersBox.firstChild);
+  const sliders = getFromLocalStorage("sliders");
+  sliders.push({ headline, image });
+  saveToLocalStorage("sliders", sliders);
 
-      // Clear the input fields
-      inpheadlines.value = '';
-      inputdata.value = '';
-  }
+  inpheadlines.value = '';
+  inputdata.value = '';
+  imagePreview.src = '';
+  imageInput.value = '';
+});
 
-})
+// Initialize data on page load
+document.addEventListener("DOMContentLoaded", initializeFromLocalStorage);
 
 
 
+
+
+// back button in page 2
 
  const backbtn2= document.querySelector("#backbtn");
 
@@ -346,7 +418,10 @@ backbtn2.addEventListener("click",()=>{
   loginBtn.style.display="block";
   navbar.style.height   ="12.7%";
   navbar.style.position  = "fixed";
+  bottomrow.style.display="flex";
+  pg1.removeAttribute("id");
   page1.style.display = "block";
   
   
 })
+
