@@ -3,67 +3,67 @@ const quotes    = document.querySelector(".quotes > h5")
 
 
 
-// const randomQuotes = [
-//     "Success is the sum of small efforts, repeated day in and day out. – Robert Collier",
-//     "The future belongs to those who believe in the beauty of their dreams. – Eleanor Roosevelt",
-//     "Don’t watch the clock; do what it does. Keep going. – Sam Levenson",
-//     "What you get by achieving your goals is not as important as what you become by achieving them. – Zig Ziglar",
-//     "You are never too old to set another goal or to dream a new dream. – C.S. Lewis",
-//     "The only limit to our realization of tomorrow will be our doubts of today. – Franklin D. Roosevelt",
-//     "Opportunities don't happen. You create them. – Chris Grosser",
-//     "The secret of getting ahead is getting started. – Mark Twain",
-//     "Setting goals is the first step in turning the invisible into the visible. – Tony Robbins",
-//     "I never dreamed about success. I worked for it. – Estée Lauder",
-//     "Success usually comes to those who are too busy to be looking for it. – Henry David Thoreau",
-//     "It always seems impossible until it’s done. – Nelson Mandela",
-//     "Aim for the moon. If you miss, you may hit a star. – W. Clement Stone",
-//     "Great things are not done by impulse, but by a series of small things brought together. – Vincent van Gogh",
-//     "Believe you can and you’re halfway there. – Theodore Roosevelt",
-//     "Act as if what you do makes a difference. It does. – William James",
-//     "Start where you are. Use what you have. Do what you can. – Arthur Ashe",
-//     "Discipline is the bridge between goals and accomplishment. – Jim Rohn",
-//     "Success is not final, failure is not fatal: It is the courage to continue that counts. – Winston Churchill",
-//     "Dream big and dare to fail. – Norman Vaughan"
-//   ];
+const randomQuotes = [
+    "Success is the sum of small efforts, repeated day in and day out. – Robert Collier",
+    "The future belongs to those who believe in the beauty of their dreams. – Eleanor Roosevelt",
+    "Don’t watch the clock; do what it does. Keep going. – Sam Levenson",
+    "What you get by achieving your goals is not as important as what you become by achieving them. – Zig Ziglar",
+    "You are never too old to set another goal or to dream a new dream. – C.S. Lewis",
+    "The only limit to our realization of tomorrow will be our doubts of today. – Franklin D. Roosevelt",
+    "Opportunities don't happen. You create them. – Chris Grosser",
+    "The secret of getting ahead is getting started. – Mark Twain",
+    "Setting goals is the first step in turning the invisible into the visible. – Tony Robbins",
+    "I never dreamed about success. I worked for it. – Estée Lauder",
+    "Success usually comes to those who are too busy to be looking for it. – Henry David Thoreau",
+    "It always seems impossible until it’s done. – Nelson Mandela",
+    "Aim for the moon. If you miss, you may hit a star. – W. Clement Stone",
+    "Great things are not done by impulse, but by a series of small things brought together. – Vincent van Gogh",
+    "Believe you can and you’re halfway there. – Theodore Roosevelt",
+    "Act as if what you do makes a difference. It does. – William James",
+    "Start where you are. Use what you have. Do what you can. – Arthur Ashe",
+    "Discipline is the bridge between goals and accomplishment. – Jim Rohn",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts. – Winston Churchill",
+    "Dream big and dare to fail. – Norman Vaughan"
+  ];
   
-// // const imgArray = ["1","2","3","4","5","6"]
-// const imgArray = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg"]
+// const imgArray = ["1","2","3","4","5","6"]
+const imgArray = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg"]
 
 
 
 
 
-// // Preload images
+// Preload images
 
-// imgArray.forEach(img => {
-//     const imgElement = new Image();
-//     imgElement.src = `img/${img}`;
-// });
+imgArray.forEach(img => {
+    const imgElement = new Image();
+    imgElement.src = `img/${img}`;
+});
 
 
 
-// setInterval(() => {
-//     const num = Math.floor(Math.random()* randomQuotes.length)
-//      quotes.style.opacity = 0;
+setInterval(() => {
+    const num = Math.floor(Math.random()* randomQuotes.length)
+     quotes.style.opacity = 0;
 
-//         setTimeout(() => {
-//             quotes.style.opacity = 1;
-//             quotes.innerHTML=randomQuotes[num]
-//             console.log(num);
+        setTimeout(() => {
+            quotes.style.opacity = 1;
+            quotes.innerHTML=randomQuotes[num]
+            console.log(num);
             
 
-//         }, 300);
+        }, 300);
 
-//       const num2 = Math.floor(Math.random()*imgArray.length)
-//       container.style.opacity = 0;
-//         setTimeout(() => {
-//             container.style.opacity = 1;
-//             container.style.backgroundImage = `url(img/${imgArray[num2]})`
-//            console.log(num2);
+      const num2 = Math.floor(Math.random()*imgArray.length)
+      container.style.opacity = 0;
+        setTimeout(() => {
+            container.style.opacity = 1;
+            container.style.backgroundImage = `url(img/${imgArray[num2]})`
+           console.log(num2);
            
-//         }, 300);
+        }, 300);
         
-// }, 5000)
+}, 5000)
 
 
 
