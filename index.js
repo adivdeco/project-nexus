@@ -3,37 +3,38 @@ const quotes    = document.querySelector(".quotes > h5")
 
 
 
-const randomQuotes = [
-    "Success is the sum of small efforts, repeated day in and day out. – Robert Collier",
-    "The future belongs to those who believe in the beauty of their dreams. – Eleanor Roosevelt",
-    "Don’t watch the clock; do what it does. Keep going. – Sam Levenson",
-    "What you get by achieving your goals is not as important as what you become by achieving them. – Zig Ziglar",
-    "You are never too old to set another goal or to dream a new dream. – C.S. Lewis",
-    "The only limit to our realization of tomorrow will be our doubts of today. – Franklin D. Roosevelt",
-    "Opportunities don't happen. You create them. – Chris Grosser",
-    "The secret of getting ahead is getting started. – Mark Twain",
-    "Setting goals is the first step in turning the invisible into the visible. – Tony Robbins",
-    "I never dreamed about success. I worked for it. – Estée Lauder",
-    "Success usually comes to those who are too busy to be looking for it. – Henry David Thoreau",
-    "It always seems impossible until it’s done. – Nelson Mandela",
-    "Aim for the moon. If you miss, you may hit a star. – W. Clement Stone",
-    "Great things are not done by impulse, but by a series of small things brought together. – Vincent van Gogh",
-    "Believe you can and you’re halfway there. – Theodore Roosevelt",
-    "Act as if what you do makes a difference. It does. – William James",
-    "Start where you are. Use what you have. Do what you can. – Arthur Ashe",
-    "Discipline is the bridge between goals and accomplishment. – Jim Rohn",
-    "Success is not final, failure is not fatal: It is the courage to continue that counts. – Winston Churchill",
-    "Dream big and dare to fail. – Norman Vaughan"
-  ];
+// const randomQuotes = [
+//     "Success is the sum of small efforts, repeated day in and day out. – Robert Collier",
+//     "The future belongs to those who believe in the beauty of their dreams. – Eleanor Roosevelt",
+//     "Don’t watch the clock; do what it does. Keep going. – Sam Levenson",
+//     "What you get by achieving your goals is not as important as what you become by achieving them. – Zig Ziglar",
+//     "You are never too old to set another goal or to dream a new dream. – C.S. Lewis",
+//     "The only limit to our realization of tomorrow will be our doubts of today. – Franklin D. Roosevelt",
+//     "Opportunities don't happen. You create them. – Chris Grosser",
+//     "The secret of getting ahead is getting started. – Mark Twain",
+//     "Setting goals is the first step in turning the invisible into the visible. – Tony Robbins",
+//     "I never dreamed about success. I worked for it. – Estée Lauder",
+//     "Success usually comes to those who are too busy to be looking for it. – Henry David Thoreau",
+//     "It always seems impossible until it’s done. – Nelson Mandela",
+//     "Aim for the moon. If you miss, you may hit a star. – W. Clement Stone",
+//     "Great things are not done by impulse, but by a series of small things brought together. – Vincent van Gogh",
+//     "Believe you can and you’re halfway there. – Theodore Roosevelt",
+//     "Act as if what you do makes a difference. It does. – William James",
+//     "Start where you are. Use what you have. Do what you can. – Arthur Ashe",
+//     "Discipline is the bridge between goals and accomplishment. – Jim Rohn",
+//     "Success is not final, failure is not fatal: It is the courage to continue that counts. – Winston Churchill",
+//     "Dream big and dare to fail. – Norman Vaughan"
+//   ];
   
-// const imgArray = ["1","2","3","4","5","6"]
-const imgArray = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg"]
+// // const imgArray = ["1","2","3","4","5","6"]
+// const imgArray = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "img6.jpg"]
 
 
 
 
 
-// Preload images
+// // Preload images
+
 // imgArray.forEach(img => {
 //     const imgElement = new Image();
 //     imgElement.src = `img/${img}`;
@@ -61,6 +62,7 @@ const imgArray = ["img1.jpg", "img2.jpg", "img3.jpg", "img4.jpg", "img5.jpg", "i
 //            console.log(num2);
            
 //         }, 300);
+        
 // }, 5000)
 
 
@@ -99,7 +101,7 @@ const backend = (event) => {
     
   } else {
     console.log("Invalid credentials");
-    alert("Invalid email or password. Please try again.");
+    alert("Invalid email or password. try = sadiv120@gmail.com or passward = 1234 ");
   }
 };
 // Attach the event listener to the form
@@ -424,4 +426,113 @@ backbtn2.addEventListener("click",()=>{
   
   
 })
+
+
+//  page 3 opeaning or cloassing .. task 
+
+const page3 = document.querySelector(".page3");
+const pg3   = document.querySelector("#pg3");
+const slidersBox = document.querySelector(".sliders-box")
+const back       = document.querySelector("#back")
+const photo      = document.querySelector(".photo img")
+const pg3Heading = document.querySelector(".pg3-heading")
+const pg3P       = document.querySelector(".pg3-p")
+
+
+// showing data of top-blogs in pg3
+slidersBox.addEventListener("click", (event) => {
+  console.log(event.target);
+  
+  if (event.target.closest(".sliders-card")) {
+
+    // all page view css .
+    pg3.removeAttribute("id");
+    page3.style.display = "block";
+    console.log("clicked");
+    console.log(event);
+    navbar.style.height   ="6%";
+    navbar.style.position  = "relative";
+    bottomrow.style.display="none";
+    toprow.style.display="flex"
+    toprow.style.alignItems = "center"
+    toprow.style.justifyContent = "space-between"
+    toprow.style.height = "100%"
+    toprow.style.backgroundColor = "#232323"
+    
+    // all page viwe css ends..^^ˆˆˆ^^
+
+    // appllying all item which is on clicked item on page 3..
+
+    
+    const sliderCard = event.target.closest(".sliders-card");
+    const imgElement = sliderCard.querySelector(".slider-img img");
+    const headingElement = sliderCard.querySelector(".slider-txt");
+    const paraElement    = sliderCard.querySelector(".slider-para-txt")
+
+    photo.src = imgElement.src;
+    pg3Heading.textContent = headingElement.textContent;
+    pg3P.textContent = paraElement.textContent 
+
+  }
+});
+
+
+// showing data of recent-blogs in pg3
+const blogsOfPg1 = document.querySelector(".blogs-of-pg1")
+
+blogsOfPg1.addEventListener("click", (e)=>{
+  
+  console.log(e.target);
+
+  if (e.target.closest(".blogs-card")) {
+        // all page view css .
+    pg3.removeAttribute("id");
+    page3.style.display = "block";
+    console.log("clicked");
+    console.log(event);
+    navbar.style.height   ="6%";
+    navbar.style.position  = "relative";
+    bottomrow.style.display="none";
+    toprow.style.display="flex"
+    toprow.style.alignItems = "center"
+    toprow.style.justifyContent = "space-between"
+    toprow.style.height = "100%"
+    toprow.style.backgroundColor = "#232323"
+    
+    
+    const blogsCard  = event.target.closest(".blogs-card");
+    const imgElement = blogsCard.querySelector(".blogs-img img");
+    const headingElement = blogsCard.querySelector(".blogs-data h1");
+    const paraElement    = blogsCard.querySelector(".blogs-data p")
+
+    photo.src = imgElement.src;
+    pg3Heading.textContent = headingElement.textContent;
+    pg3P.textContent = paraElement.textContent 
+  }
+  
+
+})
+
+// back button function in pg3
+const toprow = document.querySelector(".top-row")
+
+back.addEventListener("click", (event) => {
+  pg3.setAttribute("id","pg3")
+  pg3.style.display ="none"
+  console.log("close");
+  console.log(event);
+  navbar.style.height   ="12.7%";
+  navbar.style.position  = "fixed";
+  bottomrow.style.display="flex";
+  toprow.style.alignItems = "center"
+  toprow.style.justifyContent = "space-between"
+  toprow.style.height = "50%"
+  toprow.style.backgroundColor = "transparent"
+  // page3.style.display = "block"
+  
+  
+})
+     
+     
+
 
